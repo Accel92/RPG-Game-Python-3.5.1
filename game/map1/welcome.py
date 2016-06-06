@@ -107,4 +107,4 @@ class Welcome(object):
 			i -= 1
 			time.sleep(1)
 		print("")
-		return 'aryan'
+		return 'second_location'
