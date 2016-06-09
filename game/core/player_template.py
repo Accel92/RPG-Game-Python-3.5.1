@@ -1,8 +1,9 @@
 class PlayerTemplate:
-	def set_level(self, level):
-			self.__level = level
-			self.__hp = 100 + 50 *(self.__level - 1)
-			self.__mana = self.__health
+	
+	def __init__(self, level):
+		self._level = level
+		self._hp = 100 + 50 *(self._level - 1)
+		self._mana = self._hp
 	
 	def get_hp(self):
-		return self.__hp
+		return self._hp
