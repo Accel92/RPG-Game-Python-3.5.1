@@ -31,6 +31,7 @@ class Map(object):
     scenes = {
         'welcome': Welcome(),
         'second_location': SecondLocation(),
+        'third_location': ThirdLocation(),
         'finished': Boss(),
     }
 
