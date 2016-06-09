@@ -1,71 +1,64 @@
-from .choose_skill import choose_skill
+from sys import exit
+import random
+import time
 
-class Player(object):
+class Fight(object):
+	
+	def __init__(self, mob_instance):
+		self.mob = mob_instance
+		
+	def fight(self):
+		
+		from . import my_player
+		mob_name = self.mob.get_name()
+		mob_hp = self.mob.get_hp()
+		player_name = my_player.get_name()
+		player_hp = my_player.get_hp()
 
-	
-	def __init__(self):
-		self.__exp = 0
-		self.__level = 1
-	
-	def set_name(self, name):
-		self.__name = name
-	
-	def set_stats(self, experience):
-		self.__exp += experience
-		self.__level = (self.__exp + 100)//100
-		self.__hp = 100 + 50 *(self.__level - 1)
-		self.__mana = self.__health
-	
-	def set_spec(self, spec):
-		self.__spec = spec
-	
-	def set_skills(self):
-		'''use every time at the end of fight f-tion to 
-		set skills power according to newly gainsed exp'''
-		self.__skills = self.__spec.skillset()	
-		# skills_set_per_level is a f-tion of every profession
+		print(self.mob.fight_plot)   # fight_plot is defined with mob_lvl in it
 		
-	def use_skill(self):
-		'''method used strictly inside fight function'''
+		mob_hit_chance = random.randint(0,100)
+		if self.mob.first_hit_chance_ratio >= mob_hit_chance:
+			
+			mob_dmg = self.mob.attack()
+			player_hp -= mob_dmg
+			print("")
+			print("%s's attacked you for %s dmg" %(mob_name, mob_dmg))
+			time.sleep(1)
+			if player_hp < 0:
+				print("You lose")
+				exit(0)
+		print("%s's hp is %s" %(mob_name, mob_hp))
 		
-		number_of_skills = len(self.__skills) 
-		skill_keys = sorted(self.__skills)
-		skill_values = [value for (key, value) in sorted(self.__skills.items())]
+		while player_hp > 0 and mob_hp > 0:
+			
+			time.sleep(1)
+			print("")
+			player_dmg = my_player.use_skill()
+			mob_hp -= player_dmg
+			print("")
+			print("Player %s attacked mob for %s dmg" %(player_name, player_dmg))
+			time.sleep(1)
+			if mob_hp < 0:	
+				print("%s's hp is %s now" %(mob_name, mob_hp))
+				break
+			
+			mob_dmg = self.mob.attack()
+			player_hp -= mob_dmg
+			print("%s attacked you for %s dmg" %(mob_name, mob_dmg))
+			time.sleep(1)
+			print("%s's hp is %s now" %(mob_name, mob_hp))
+			print("")
+			print("%s's hp is %s now" % (player_name, player_hp))	
+			time.sleep(1.5)
 		
-		i = 0
-		while i < number_of_skills:
-			print(skill_keys[i], skill_values[i], "dmg")
-			i += 1
-		
-		what_do = choose_skill(number_of_skills)
-		return skill_values[what_do - 1]	#because iteration from 0
-		
-		
-
-	def get_player(self):
-		print("Name: ", self.__name)
-		print("level: ", self.__level)
-		print("experience: ", self.__exp)
-		print("health: ", self.__health)
-		print("mana: ", self.__mana)
-		
-	def get_name(self):
-		return self.__name
-
-	def get_level(self):
-		return self.__level
-		
-	def get_exp(self):
-		return self.__exp
-		
-	def get_spec(self):
-		return self.__spec
-		
-	def get_skills(self):
-		return self.__skills
-		
-	def get_hp(self):
-		return self.__hp
-		
-	def get_mana(self):
-		return self.__mana
+		if player_hp > 0:
+			print("You win")
+		else: 
+			print("You lose")
+			
+		my_player.set_stats(self.mob.get_exp_reward())
+		my_player.set_skills()
+		print("Your level is now %s" % my_player.get_level())
+		print("END OF FIGHT HERE")
+		#return 'finished'
