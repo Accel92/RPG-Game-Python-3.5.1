@@ -2,14 +2,14 @@ import random
 import time
 
 from ..core import Fight
-from ..chars1 import Bull
+from ..chars1 import Warrior
 
 class SecondLocation(object):
 	
 	def start(self):
 		print("You enter a location and encounter taunted Bull, I'm afraind")
 		print("that only thing left to do is fight")
-		my_enemy = Bull(1, "[Boss]")
+		my_enemy = Warrior(1, "[Boss]")
 		print("ME BE PRINTING")
 		fight1 = Fight(my_enemy)
 		fight1.fight()
