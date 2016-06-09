@@ -2,15 +2,17 @@ import random
 import time
 
 from ..core import Fight
-from ..chars1 import SpiderLv1
+from ..chars1 import Bull
 
 class SecondLocation(object):
 	
 	def start(self):
-		print("You enter a location and encounter taunted Bull, I'm afraind\
-		that only thing left to do is fight")
-		#spider = SpiderLv1()
-		fight1 = Fight()
-		fight1.fight(Bull, 1, "Boss")
+		print("You enter a location and encounter taunted Bull, I'm afraind")
+		print("that only thing left to do is fight")
+		my_enemy = Bull(1, "[Boss]")
+		print("ME BE PRINTING")
+		fight1 = Fight(my_enemy)
+		fight1.fight()
 		time.sleep(2)
-		return 0
+		return 'third_location'
+		#return 0
