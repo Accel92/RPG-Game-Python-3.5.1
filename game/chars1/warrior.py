@@ -1,4 +1,4 @@
-from ..core import PlayerTemplate
+#from ..core import PlayerTemplate
 from ..core import Enemy
 
 from random import randint
