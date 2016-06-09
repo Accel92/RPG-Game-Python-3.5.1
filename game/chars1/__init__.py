@@ -1,4 +1,4 @@
 from .knight import Knight
 from .mage import Mage
 
-from .warrior import Warrior
+from .warrior(enemy) import Warrior
