@@ -4,6 +4,8 @@ import time
 
 from ..chars1 import Knight
 from ..chars1 import Mage
+from ..chars1 import Shadow
+from ..chars1 import Huntsman
 
 from ..core import my_player
 from ..core.error_log import wrong_choice
@@ -14,7 +16,7 @@ class Welcome(object):
 		
 		print( '''\n\n\t\t\t" SHAZAKIN "\n\n\n
 		Chapter 1. The beginning\n
-		\nIt's been a while since you were awake... young one
+		\nIt's been a while since you were awake...
 		\nI'm glad you finally regained consciousness, I've been wating.
 		\nYou might have lost your memories. It is such a cliche in this world,
 		\nbut looking at your confused face it is possible.
@@ -41,11 +43,15 @@ class Welcome(object):
 		
 		my_player.set_name(name)
 		print("\nThat is correct, %s, now then... " % my_player.get_name())
-		print("Who are you, what is your speciality ")
+		print("Who are you? Can you recall? ")
 		
 		while True:
-			print("\n1. I'm knight, I cut my opponents through")
-			print("2. I'm mage, I spellcast magic to wipe out my enemies")
+			print("\n1. My lady, I remember, I am King's faightful knight")
+			print(" I await orders.")
+			print("\n2. Yes, Wizard of the Astaroth Magic Entourage.")
+			print("\n3. Would you please don't act so dignified?")
+			print(" I know who I am, shades have already spoken...")
+			print("\n 4. Bow's be my friend... and prey... yeah, prey")
 			num_spec = input(">")
 			if num_spec == "1":
 				spec = Knight()	
@@ -61,14 +67,20 @@ class Welcome(object):
 		print("%s, the %s" %(my_player.get_name(), my_player.get_spec().profession_name) + ", that sounds good...")
 		
 		while True:
-			print("\nWhat do you want to do now?\n")
-
 			if num_spec == "1":
+				print("My liege, It is me who is your servant... for now. Let's take our leave, shall we?")
 				print("1. Let's stand up, I'll take my sword, armor and look around")
 			elif num_spec == "2":
+				print("I did hope you would remember, old one")
+				print("1. You don't plan on telling me who you are, I know, let us go.")
+			elif num_spec == "3":
+				print("Yes.")
+				print("... < Proceed >")
+			elif num_spec == "4":
 				print("1. Let's stand up, I'll take my stuff, robe and look around")
-			
-			print("2. I'm so tired, I need to sleep some more.")
+				print("1. Let's stand up, I'll take my stuff, robe and look around")
+
+			print("2. < Sleep some more. >.")
 			print("3. I don't care, this whole situation is lame, seriously.")
 			what_do = input(">")
 			
@@ -101,7 +113,7 @@ class Welcome(object):
 		print("press enter when ready to go")
 		input()
 		print("We will proceed when we reach zero:\n")
-		i = 3
+		i = 1
 		while i > 0:
 			print(i)
 			i -= 1
