@@ -10,6 +10,10 @@ class Map(object):
 	last_location = Boss()
 	
 	locations = { 
+	'castle' : Castle(),
+	'wizard tower' : WizardTower(),
+	'shadow one' : ShadowOne(),
+	'copse' : Copse(),
 	'second_location' : SecondLocation(),
 	'third_location' : ThirdLocation()
 	}
@@ -26,12 +30,11 @@ class Map(object):
 		
 		
 		
-'''class Map(object):	alternative
+'''class Map(object):
 
     scenes = {
         'welcome': Welcome(),
         'second_location': SecondLocation(),
-        'third_location': ThirdLocation(),
         'finished': Boss(),
     }
 
