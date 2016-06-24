@@ -2,10 +2,10 @@ from sys import exit
 import random
 import time
 
-from ..chars1 import Knight
-from ..chars1 import Mage
-from ..chars1 import Shadow
-from ..chars1 import Huntsman
+from ..chars1.knight import Knight
+from ..chars1.mage import Mage
+from ..chars1.shadow import Shadow
+from ..chars1.huntsman import Huntsman
 
 from ..core import my_player
 from ..core.error_log import wrong_choice
@@ -44,57 +44,53 @@ class Welcome(object):
 		my_player.set_name(name)
 		print("\nThat is correct, %s, now then... " % my_player.get_name())
 		print("Who are you? Can you recall? ")
-		
+
+		spec = None
 		while True:
 			print("\n1. My lady, I remember, I am King's faightful knight")
-			print(" I await orders.")
+			print("I await orders.")
 			print("\n2. Yes, Wizard of the Astaroth Magic Entourage.")
 			print("\n3. Would you please don't act so dignified?")
-			print(" I know who I am, shades have already spoken...")
-			print("\n 4. Bow's be my friend... and prey... yeah, prey")
+			print("I know who I am, shades have already spoken...")
+			print("\n4. Bow's be my friend... and prey... yeah, prey")
 			num_spec = input(">")
-			if num_spec == "1":
-				spec = Knight()	
-				break
-			elif num_spec == "2":
-				spec = Mage()
-				break
-			else:
-				print(wrong_choice)
-		
+
+			if num_spec == "1": spec = Knight()
+			elif num_spec == "2": spec = Mage()
+			elif num_spec == "3": spec = Shadow()
+			elif num_spec == "4": spec = Huntsman()
+			else: print(wrong_choice)
+			break
+
 		my_player.set_spec(spec)
 		my_player.set_skills()
 		print("%s, the %s" %(my_player.get_name(), my_player.get_spec().profession_name) + ", that sounds good...")
-		
+
 		while True:
 			if num_spec == "1":
-				print("My liege, It is me who is your servant... for now. Let's take our leave, shall we?")
+				print("My liege, It is me who is your servant... for now. Let's take our leave, shall we?\n")
 				print("1. Let's stand up, I'll take my sword, armor and look around")
 			elif num_spec == "2":
-				print("I did hope you would remember, old one")
+				print("I did hope you would remember, old one\n")
 				print("1. You don't plan on telling me who you are, I know, let us go.")
 			elif num_spec == "3":
-				print("Yes.")
-				print("... < Proceed >")
+				print("Yes.\n")
+				print("1. < Proceed >")
 			elif num_spec == "4":
-				print("1. Let's stand up, I'll take my stuff, robe and look around")
-				print("1. Let's stand up, I'll take my stuff, robe and look around")
+				print("Good, I like your vibe, soon you will get a grip. Let's go.")
+				print("1. Sure, why not. I feel like I've been sleeping for ages")
 
 			print("2. < Sleep some more. >.")
 			print("3. I don't care, this whole situation is lame, seriously.")
 			what_do = input(">")
 			
-			if what_do == "1":
-				break
+			if what_do == "1": break
 			elif what_do == "2":
 				print("What do now: ")
 				what_do_now = input("1. Let's go\n2. Let's sleep some more\n>")
-				if what_do_now == "1":
-					break
-				elif what_do_now == "2":
-					pass
-				else:
-					print(error_log.wrong_choice)
+				if what_do_now == "1": break
+				elif what_do_now == "2": pass
+				else: print(error_log.wrong_choice)
 			elif what_do == "3":
 				print("You can always leave whis world, is that what you wish for?")
 				yes_no = input("1. Yes\n2. No\n>")
@@ -104,10 +100,8 @@ class Welcome(object):
 				elif yes_no == "2":
 					print("Then let me take my leave now, good luck...\n")
 					break
-				else:
-					print(wrong_choice)
-			else:
-				print(wrong_choice)
+				else: print(wrong_choice)
+			else: print(wrong_choice)
 
 		print("We are done for now. I need to leave, take care %s" % my_player.get_name())
 		print("press enter when ready to go")
@@ -119,4 +113,8 @@ class Welcome(object):
 			i -= 1
 			time.sleep(1)
 		print("")
-		return 'second_location'
+
+		if isinstance(spec, Knight): return 'castle'
+		elif isinstance(spec, Mage): return 'wizard tower'
+		elif isinstance(spec, Shadow): return 'shadow one'
+		elif isinstance(spec, Huntsman): return 'copse'
