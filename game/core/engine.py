@@ -16,7 +16,7 @@ class Engine(object):
 				break
 			current_scene = self.map.next_location(next_scene_return)
 			
-'''class Engine(object):	alternative
+'''class Engine(object):
 
     def __init__(self, scene_map):
         self.scene_map = scene_map
