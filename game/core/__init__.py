@@ -1,9 +1,13 @@
-from .engine import Engine
-from .fight import Fight
-from .player import Player
-from .new_player import my_player
-from .error_log import wrong_choice
-from .int_input import int_input
-from .choose_skill import choose_skill
-from .enemy import Enemy
-from .player_template import PlayerTemplate
+from .map import Map
+
+from .welcome import Welcome
+from .boss import Boss
+
+from .castle import Castle
+from .wizard_tower import WizardTower
+from .shadow1 import ShadowOne
+from .copse import Copse
+
+from .second_location import SecondLocation
+from .third_location import ThirdLocation
+
