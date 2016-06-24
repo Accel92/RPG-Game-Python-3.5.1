@@ -2,12 +2,21 @@ import random
 import time
 
 from ..core import Fight
-from ..chars1 import Warrior
+from ..enemies.warrior import Warrior
 
 class Castle(object):
 
 	def start(self):
-		print("You enter a location and encounter taunted Bull, I'm afraind")
+		print("""
+		You stand up and walk around the room. It's small with some furnitures
+		and a lamp on wooden table. You dress up in the linen clothes that have been
+		left for you and. You look through a big castle window in your room.
+		You see part of fortification and a cliff. Further ahead there is a Winter Forest.
+		You recognize it for
+
+
+
+		""")
 		print("that only thing left to do is fight")
 		my_enemy = Warrior(1, "[Boss]")
 		print("ME BE PRINTING")

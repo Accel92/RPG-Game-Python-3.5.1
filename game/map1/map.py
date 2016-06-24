@@ -1,7 +1,12 @@
-from . import Welcome
-from . import SecondLocation
-from . import ThirdLocation
-from . import Boss
+from .welcome import Welcome
+from .second_location import SecondLocation
+from .third_location import ThirdLocation
+from .boss import Boss
+
+from .castle import Castle
+from .wizard_tower import WizardTower
+from .shadow1 import ShadowOne
+from .copse import Copse
 
 
 class Map(object):
@@ -11,11 +16,11 @@ class Map(object):
 	
 	locations = { 
 	'castle' : Castle(),
-	'wizard tower' : WizardTower(),
-	'shadow one' : ShadowOne(),
+	'wizard_tower' : WizardTower(),
+	'shadow_one' : ShadowOne(),
 	'copse' : Copse(),
-	'second_location' : SecondLocation(),
-	'third_location' : ThirdLocation()
+	'second location' : SecondLocation(),
+	'third location' : ThirdLocation()
 	}
 	
 	def get_first_location(self):
@@ -29,14 +34,17 @@ class Map(object):
 		return loc
 		
 		
-		
-'''class Map(object):
+'''
+class Map(object):
 
     scenes = {
-        'welcome': Welcome(),
-        'second_location': SecondLocation(),
-        'finished': Boss(),
-    }
+	'castle' : Castle(),
+	'wizard_tower' : WizardTower(),
+	'shadow_one' : ShadowOne(),
+	'copse' : Copse(),
+	'second location' : SecondLocation(),
+	'third location' : ThirdLocation()
+	}
 
     def __init__(self, start_scene):
         self.start_scene = start_scene
