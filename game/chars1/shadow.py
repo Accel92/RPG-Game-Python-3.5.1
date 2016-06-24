@@ -1,4 +1,4 @@
-from ..core import my_player
+from ..core.new_player import my_player
 
 class Shadow(object):
 
@@ -13,8 +13,8 @@ class Shadow(object):
 		if player_level < 3:
 			skills_dict = {
 			"1. Slash (basic):" : player_hp  //6,
-			"1. Shadow Step: " : player_hp //4,
-			"2. Ambush: " : player_hp //3
+			"2. Shadow Step: " : player_hp // 4,
+			"3. Ambush: " : player_hp // 3
 			}
 			return skills_dict
 
@@ -22,7 +22,7 @@ class Shadow(object):
 			skills_dict = {
 			"1. Slash (basic): " : player_hp //6,
 			"2. Shadow Step (basic): " : player_hp //4,
-			"3. Ambush: " : player_hp //3,
+			"3. Ambush: " : player_hp // 3,
 			"4. Trap: " : player_hp * 3
 			}
 			return skills_dict

@@ -1,4 +1,4 @@
-from ..core import my_player
+from ..core.new_player import my_player
 
 class Huntsman(object):
 
